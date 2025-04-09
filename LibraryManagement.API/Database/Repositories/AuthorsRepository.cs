@@ -15,9 +15,13 @@ namespace LibraryManagement.API.Database.Repositories
             _logger = logger;
         }
 
-        public async Task<int> CreateAuthor(Authors author)
+        public async Task<Authors> CreateAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            var createdEntity =  await _libraryManagementDbContext.Authors.AddAsync(author);
+            await _libraryManagementDbContext.SaveChangesAsync();
+
+            return createdEntity.Entity;
         }
 
         public async Task DeleteAuthor(int id)
@@ -27,7 +31,9 @@ namespace LibraryManagement.API.Database.Repositories
 
         public async Task<Authors> GetAuthor(int id)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            return await _libraryManagementDbContext.Authors.Where(author => author.AuthorId == id)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Authors>> GetAuthors()
