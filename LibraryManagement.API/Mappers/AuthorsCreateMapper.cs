@@ -3,9 +3,9 @@ using LibraryManagement.API.Models;
 
 namespace LibraryManagement.API.Mappers
 {
-    public static class AuthorsCreateUpdateMapper
+    public static class AuthorsCreateMapper
     {
-        public static Authors Map(this AuthorsCreateUpdateDto authorsCreateDto)
+        public static Authors Map(this AuthorsCreateDto authorsCreateDto)
         {
             return new Authors
             {

@@ -24,32 +24,27 @@ namespace LibraryManagement.API.Database.Repositories
             return createdEntity.Entity;
         }
 
-        public async Task DeleteAuthor(Authors author)
+        public async Task DeleteAuthor(int id)
         {
-            _logger.LogInformation("In AuthorsRepository.GetAuthors");
-            var deletedEntity = _libraryManagementDbContext.Authors.Remove(author);
-            await _libraryManagementDbContext.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
         public async Task<Authors> GetAuthor(int id)
         {
             _logger.LogInformation("In AuthorsRepository.GetAuthors");
-            return await _libraryManagementDbContext.Authors.AsNoTracking().Where(author => author.AuthorId == id)
+            return await _libraryManagementDbContext.Authors.Where(author => author.AuthorId == id)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Authors>> GetAuthors()
         {
             _logger.LogInformation("In AuthorsRepository.GetAuthors");
-            return await _libraryManagementDbContext.Authors.AsNoTracking().ToListAsync();
+            return await _libraryManagementDbContext.Authors.ToListAsync();
         }
 
         public async Task UpdateAuthor(Authors author)
         {
-            _logger.LogInformation("In AuthorsRepository.GetAuthors");
-            var UpdatedEntity = _libraryManagementDbContext.Authors.Update(author);
-            await _libraryManagementDbContext.SaveChangesAsync();
-
+            throw new NotImplementedException();
         }
     }
 }

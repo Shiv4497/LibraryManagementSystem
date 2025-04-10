@@ -8,6 +8,6 @@ namespace LibraryManagement.API.Services.Interfaces.Services
         Task<Authors> GetAuthor(int id);
         Task<Authors> CreateAuthor(Authors author);
         Task UpdateAuthor(Authors author);
-        Task DeleteAuthor(Authors author);
+        Task DeleteAuthor(int id);
     }
 }
