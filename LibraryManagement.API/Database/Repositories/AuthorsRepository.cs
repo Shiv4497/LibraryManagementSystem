@@ -15,30 +15,41 @@ namespace LibraryManagement.API.Database.Repositories
             _logger = logger;
         }
 
-        public async Task<int> CreateAuthor(Authors author)
+        public async Task<Authors> CreateAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            var createdEntity =  await _libraryManagementDbContext.Authors.AddAsync(author);
+            await _libraryManagementDbContext.SaveChangesAsync();
+
+            return createdEntity.Entity;
         }
 
-        public async Task DeleteAuthor(int id)
+        public async Task DeleteAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            var deletedEntity = _libraryManagementDbContext.Authors.Remove(author);
+            await _libraryManagementDbContext.SaveChangesAsync();
         }
 
         public async Task<Authors> GetAuthor(int id)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            return await _libraryManagementDbContext.Authors.AsNoTracking().Where(author => author.AuthorId == id)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Authors>> GetAuthors()
         {
             _logger.LogInformation("In AuthorsRepository.GetAuthors");
-            return await _libraryManagementDbContext.Authors.ToListAsync();
+            return await _libraryManagementDbContext.Authors.AsNoTracking().ToListAsync();
         }
 
         public async Task UpdateAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsRepository.GetAuthors");
+            var UpdatedEntity = _libraryManagementDbContext.Authors.Update(author);
+            await _libraryManagementDbContext.SaveChangesAsync();
+
         }
     }
 }

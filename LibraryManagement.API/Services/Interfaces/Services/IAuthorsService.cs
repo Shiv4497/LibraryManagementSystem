@@ -6,8 +6,8 @@ namespace LibraryManagement.API.Services.Interfaces.Services
     {
         Task<IEnumerable<Authors>> GetAuthors();
         Task<Authors> GetAuthor(int id);
-        Task<int> CreateAuthor(Authors author);
+        Task<Authors> CreateAuthor(Authors author);
         Task UpdateAuthor(Authors author);
-        Task DeleteAuthor(int id);
+        Task DeleteAuthor(Authors author);
     }
 }
