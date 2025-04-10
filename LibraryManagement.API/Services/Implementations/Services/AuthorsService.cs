@@ -23,9 +23,10 @@ namespace LibraryManagement.API.Services.Implementations.Services
             return await _authorsRepository.CreateAuthor(author);
         }
 
-        public async Task DeleteAuthor(int id)
+        public async Task DeleteAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsService.GetAuthors");
+            await _authorsRepository.DeleteAuthor(author);
         }
 
         public async Task<Authors> GetAuthor(int id)
@@ -43,7 +44,8 @@ namespace LibraryManagement.API.Services.Implementations.Services
 
         public async Task UpdateAuthor(Authors author)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("In AuthorsService.GetAuthors");
+            await _authorsRepository.UpdateAuthor(author);
         }
     }
 }
